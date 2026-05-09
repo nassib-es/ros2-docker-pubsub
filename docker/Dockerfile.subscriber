@@ -1,0 +1,7 @@
+FROM ros:humble
+
+WORKDIR /app
+
+COPY src/subscriber/ /app/
+
+CMD ["python3", "/app/subscriber.py"]

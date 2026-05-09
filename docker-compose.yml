@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  publisher:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.publisher
+    container_name: ros2-publisher
+    environment:
+      - ROS_DOMAIN_ID=42
+    networks:
+      - ros-network
+
+  subscriber:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.subscriber
+    container_name: ros2-subscriber
+    environment:
+      - ROS_DOMAIN_ID=42
+    networks:
+      - ros-network
+
+networks:
+  ros-network:
+    driver: bridge
